@@ -17,10 +17,10 @@ function computerPlay() {
   return computerSelection;
 }
 //player Selection
-function playerPlay() {
-  const playerSelection = prompt("Choose Rock Paper or Scissors").toUpperCase();
-  return playerSelection;
-}
+// function playerPlay() {
+//   const playerSelection = prompt("Choose Rock Paper or Scissors").toUpperCase();
+//   return playerSelection;
+// }
 
 //winner
 function winner(playerScore, computerScore) {
@@ -32,6 +32,10 @@ function winner(playerScore, computerScore) {
     return "Finally Computer Won";
   }
 }
+
+let pScore = document.querySelector(".playerScore");
+let cScore = document.querySelector(".computerScore");
+let live = document.querySelector(".live");
 
 function playRound(playerSelection, computerSelection) {
   console.log(playerSelection);
@@ -49,21 +53,31 @@ function playRound(playerSelection, computerSelection) {
     playerScore++;
     result = "Player Won";
   }
-  console.log(result);
-  console.log(`Player Score: ${playerScore}`);
-  console.log(`Computer Score: ${computerScore}`);
+  live.textContent = result;
+  pScore.textContent = playerScore;
+  cScore.textContent = computerScore;
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    const computerSelection = computerPlay();
-    const playerSelection = playerPlay();
-    playRound(playerSelection, computerSelection);
-  }
-  alert(winner(playerScore, computerScore))
-}
-
+// function game() {
+//   for (let i = 0; i < 5; i++) {
+//     const computerSelection = computerPlay();
+//     const playerSelection = playerPlay();
+//     playRound(playerSelection, computerSelection);
+//   }
+//   alert(winner(playerScore, computerScore))
+// }
 // const computerSelection = computerPlay();
 // const playerSelection = playerPlay();
 
-game();
+// game();
+
+const buttons = document.querySelectorAll(".button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    playerSelection = e.target.textContent.toUpperCase();
+    computerSelection = computerPlay();
+
+    playRound(playerSelection, computerSelection);
+  });
+});
