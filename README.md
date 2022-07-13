@@ -1,4 +1,4 @@
 # rock-paper-scissors
-a simple console rock paper scissors game 
+a simple rock paper scissors game 
 
 
